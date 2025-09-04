@@ -1,8 +1,8 @@
 {
-  "name": "api_gateway",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "description": "API Gateway for Hospital Management Platform",
+  "author": "Hosman System",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -23,6 +23,15 @@
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/config": "^3.1.1",
+    "@nestjs/swagger": "^7.1.17",
+    "@nestjs/throttler": "^5.0.1",
+    "@nestjs/axios": "^3.0.1",
+    "axios": "^1.6.2",
+    "helmet": "^7.1.0",
+    "redis": "^4.6.10",
+    "class-validator": "^0.14.0",
+    "class-transformer": "^0.5.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
