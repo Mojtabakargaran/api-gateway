@@ -81,6 +81,42 @@ export class ProxyController {
     }
   }
 
+  @All('institutional-profile')
+  async proxyToInstitutionalProfileService(@Req() req: Request, @Res() res: Response) {
+    try {
+      const endpoint = req.url;
+      const method = req.method;
+      const data = req.body;
+      const headers = this.extractHeaders(req);
+
+      const result = await this.proxyService
+        .proxyToIdentityService(endpoint, method, data, headers)
+        .toPromise();
+
+      res.status(200).json(result);
+    } catch (error) {
+      this.handleProxyError(error, res);
+    }
+  }
+
+  @All('institutional-profile/*')
+  async proxyToInstitutionalProfileServiceWithPath(@Req() req: Request, @Res() res: Response) {
+    try {
+      const endpoint = req.url;
+      const method = req.method;
+      const data = req.body;
+      const headers = this.extractHeaders(req);
+
+      const result = await this.proxyService
+        .proxyToIdentityService(endpoint, method, data, headers)
+        .toPromise();
+
+      res.status(200).json(result);
+    } catch (error) {
+      this.handleProxyError(error, res);
+    }
+  }
+
   private extractHeaders(req: Request): any {
     const allowedHeaders = [
       'authorization',
