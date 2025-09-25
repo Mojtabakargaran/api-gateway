@@ -117,6 +117,78 @@ export class ProxyController {
     }
   }
 
+  @All('operational-parameters')
+  async proxyToOperationalParametersService(@Req() req: Request, @Res() res: Response) {
+    try {
+      const endpoint = req.url;
+      const method = req.method;
+      const data = req.body;
+      const headers = this.extractHeaders(req);
+
+      const result = await this.proxyService
+        .proxyToIdentityService(endpoint, method, data, headers)
+        .toPromise();
+
+      res.status(200).json(result);
+    } catch (error) {
+      this.handleProxyError(error, res);
+    }
+  }
+
+  @All('operational-parameters/*')
+  async proxyToOperationalParametersServiceWithPath(@Req() req: Request, @Res() res: Response) {
+    try {
+      const endpoint = req.url;
+      const method = req.method;
+      const data = req.body;
+      const headers = this.extractHeaders(req);
+
+      const result = await this.proxyService
+        .proxyToIdentityService(endpoint, method, data, headers)
+        .toPromise();
+
+      res.status(200).json(result);
+    } catch (error) {
+      this.handleProxyError(error, res);
+    }
+  }
+
+  @All('dashboard')
+  async proxyToDashboardService(@Req() req: Request, @Res() res: Response) {
+    try {
+      const endpoint = req.url;
+      const method = req.method;
+      const data = req.body;
+      const headers = this.extractHeaders(req);
+
+      const result = await this.proxyService
+        .proxyToIdentityService(endpoint, method, data, headers)
+        .toPromise();
+
+      res.status(200).json(result);
+    } catch (error) {
+      this.handleProxyError(error, res);
+    }
+  }
+
+  @All('dashboard/*')
+  async proxyToDashboardServiceWithPath(@Req() req: Request, @Res() res: Response) {
+    try {
+      const endpoint = req.url;
+      const method = req.method;
+      const data = req.body;
+      const headers = this.extractHeaders(req);
+
+      const result = await this.proxyService
+        .proxyToIdentityService(endpoint, method, data, headers)
+        .toPromise();
+
+      res.status(200).json(result);
+    } catch (error) {
+      this.handleProxyError(error, res);
+    }
+  }
+
   private extractHeaders(req: Request): any {
     const allowedHeaders = [
       'authorization',
